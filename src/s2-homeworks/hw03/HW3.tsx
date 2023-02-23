@@ -20,14 +20,14 @@ import {FilterType} from "../hw02/HW2";
 
 // types
 export type UserType = {
-    _id: string // need to fix any
+    _id: string // need to fix an
     name: string // need to fix any
 }
 
-export const pureAddUserCallback = (name: string, setUsers:  (users:  UserType[])=> void, users: UserType[])=>{ // need to fix any
+export const pureAddUserCallback = (name: string, setUsers: (users: UserType[]) => void, users: UserType[]) => { // need to fix any
     const user = { // need to fix
-       name:name,
-        _id:v1()
+        name: name,
+        _id: v1()
 
     }
     setUsers([...users, user])
