@@ -8,20 +8,24 @@ function Clock() {
     // for autotests // не менять // можно подсунуть в локалСторэдж нужную дату, чтоб увидеть как она отображается
     const [date, setDate] = useState<Date>(new Date(restoreState('hw9-date', Date.now())))
     const [show, setShow] = useState<boolean>(false)
+    const [isDis, setIsDis] = useState<boolean>(false)
+
 
     const start = () => {
         // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
-        window.setInterval(() => setDate, 1000)
+        const id: number = +setInterval(() => {
+            setDate(new Date(restoreState('hw9-date', Date.now())))
+        }, 1000)
         // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval)
-
+        setTimerId(id)
+        setIsDis(true)
 
     }
 
     const stop = () => {
         // пишут студенты // поставить часы на паузу, обнулить ид таймера (timerId <- undefined)
         clearInterval(timerId);
-
-
+        setIsDis(false)
     }
 
     const onMouseEnter = () => {
@@ -33,14 +37,12 @@ function Clock() {
         setShow(false)
     }
 
-    const stringTime = '01:02:03' || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
-    const stringDate = '16.06.2022' || <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
+    const stringTime = date.toLocaleTimeString() || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
+    const stringDate = date.toLocaleTimeString() || <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-    const stringDay = +new Intl.DateTimeFormat("en-US")
-
-        || <br/> // пишут студенты
-    const stringMonth = 'June' || <br/> // пишут студенты
+    const stringDay = date.toLocaleString('en-US', {weekday: 'long'}) || <br/> // пишут студенты
+    const stringMonth = date.toLocaleString('en-US', {month: 'long'}) || <br/> // пишут студенты
 
     return (
         <div className={s.clock}>
@@ -50,7 +52,7 @@ function Clock() {
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
             >
-                <span id={'hw9-day'}>{stringDay}</span>,{' '}
+                <span id={'hw9-day'}>{stringDay}</span>,{''}
                 <span id={'hw9-time'}>
                     <strong>{stringTime}</strong>
                 </span>
@@ -74,14 +76,14 @@ function Clock() {
             <div className={s.buttonsContainer}>
                 <SuperButton
                     id={'hw9-button-start'}
-                    // disabled={true} // пишут студенты // задизэйблить если таймер запущен
+                    disabled={isDis} // пишут студенты // задизэйблить если таймер запущен
                     onClick={start}
                 >
                     start
                 </SuperButton>
                 <SuperButton
                     id={'hw9-button-stop'}
-                    //disabled={true} // пишут студенты // задизэйблить если таймер не запущен
+                    disabled={!isDis} // пишут студенты // задизэйблить если таймер не запущен
                     onClick={stop}
                 >
                     stop
