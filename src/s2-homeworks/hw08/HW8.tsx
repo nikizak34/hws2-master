@@ -5,6 +5,7 @@ import s2 from '../../s1-main/App.module.css'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
 import User from './User'
 
+
 /*
 * 1 - дописать типы и логику (сортировка по имени, фильтрация по совершеннолетию) homeWorkReducer, проверить тестом
 * 2 - дописать компоненту User
@@ -59,13 +60,18 @@ const HW8 = () => {
             <div className={s2.hw}>
                 <div className={s.container}>
                     <div className={s.buttonsContainer}>
-                        <SuperButton
-                            id={'hw8-button-up'}
-                            onClick={sortUp}
-                            xType={currentSort === 'up' ? '' : 'secondary'}
-                        >
+                       <span className={s.up}>
+                                 <SuperButton
+
+                                     id={'hw8-button-up'}
+                                     onClick={sortUp}
+                                     xType={currentSort === 'up' ? '' : 'secondary'}
+
+                                 >
                             Sort up
                         </SuperButton>
+                       </span>
+
                         <SuperButton
                             id={'hw8-button-down'}
                             onClick={sortDown}
@@ -84,8 +90,8 @@ const HW8 = () => {
 
                     <table id={'hw8-users'} className={s.users}>
                         <thead className={s.thead}>
-                        <tr>
-                            <td className={s.nameCol}>Name</td>
+                        <tr >
+                            <td className={s.nameCol}><span className={s.name}>Name</span></td>
                             <td className={s.ageCol}>Age</td>
                         </tr>
                         </thead>

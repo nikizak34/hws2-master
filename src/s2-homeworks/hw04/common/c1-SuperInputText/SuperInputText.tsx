@@ -6,6 +6,8 @@ import React, {
     ReactNode,
 } from 'react'
 import s from './SuperInputText.module.css'
+import l from './../../../hw06/common/c4-SuperEditableSpan/SuperEditableSpan.module.css'
+
 
 // тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,
@@ -50,12 +52,23 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
 
     const finalSpanClassName = s.error
         + (spanClassName ? ' ' + spanClassName : '')
-    const finalInputClassName = s.input
+
+
+ /*   const finalInputClassName = s.input
         + (error ? ' ' + s.errorInput : ' ' + s.superInput)
-        + (className ? ' ' + s.className : '') // задача на смешивание классов
+        + (className ? ' ' + s.className : '')*/ // задача на смешивание классов
+    const finalInputClassName=`${s.input} ${error?s.superInput:s.superInput} ${className?className:''}`
 
     return (
         <div className={s.inputWrapper}>
+            <div>
+                <span
+                    id={id ? id + '-span' : undefined}
+                    className={finalSpanClassName}
+                >
+                {error}
+            </span>
+            </div>
             <input
                 id={id}
                 type={'text'}
@@ -64,12 +77,8 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
                 className={finalInputClassName}
                 {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
             />
-            <span
-                id={id ? id + '-span' : undefined}
-                className={finalSpanClassName}
-            >
-                {error}
-            </span>
+
+
         </div>
     )
 }
