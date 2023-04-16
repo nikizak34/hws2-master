@@ -57,7 +57,7 @@ function HW11() {
 
 
                         />
-                        <span id={'hw11-value-2'} className={s.number}>{value2}</span>
+                        <span id={'hw11-value-2'} className={s.number2}>{value2}</span>
                     </div>
                 </div>
             </div>

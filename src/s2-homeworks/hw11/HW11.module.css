@@ -1,8 +1,40 @@
 .container {
+    padding-top: 46px;
+    padding-bottom: 200px;
+
 }
 
 .wrapper {
+    margin-bottom: 56px;
+    padding-left: 11px;
+    position: relative;
+
 }
 
 .number {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    margin-right: 20px;
+    position: absolute;
+    left: -20px;
+    top: 6px;
+
+
+
+
+}
+
+.number2{
+    margin-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    position: absolute;
+    left: 160px;
+    top: 8px;
+
 }

@@ -1,4 +1,5 @@
 .loader {
-background-image: url('Ellipse 4.svg');
-
+    background-image: url('Ellipse 4.svg');
+    width: 90px;
+    height: 90px;
 }
