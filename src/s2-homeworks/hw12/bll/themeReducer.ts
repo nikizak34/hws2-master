@@ -1,8 +1,8 @@
 const initState = {
     themeId: 1,
 }
-
-export const themeReducer = (state = initState, action: ChangeActionType): any => { // fix any
+export type initialStateType=typeof initState
+export const themeReducer = (state:initialStateType = initState, action: ChangeActionType): initialStateType => { // fix any
     switch (action.type) {
         // дописать
         case 'SET_THEME_ID':{
