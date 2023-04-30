@@ -26,7 +26,7 @@ const HW13 = () => {
         debugger
         const boss = (e: any) => {
 
-            if (x === undefined) {
+            if (x === false) {
                 setImage(error500)
                 setInfo(e.response.data.info)
                 setCode('Код 500!')
@@ -40,7 +40,7 @@ const HW13 = () => {
                 setDisable(false)
                 setText(e.message)
             }
-            if (x === false) {
+            if (x === undefined) {
                 setImage(error400)
                 setInfo(e.response.data.info)
                 setCode('Код 400!')
