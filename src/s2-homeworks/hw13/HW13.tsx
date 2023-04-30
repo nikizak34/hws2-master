@@ -24,28 +24,28 @@ const HW13 = () => {
 
     const send = (x?: boolean | null) => () => {
         debugger
-        const boss = (e:any) => {
+        const boss = (e: any) => {
 
             if (x === undefined) {
                 setImage(error500)
-                setInfo('')
+                setInfo(e.response.data.info)
                 setCode('Код 500!')
                 setDisable(false)
-                setText(e.message)
+                setText(e.response.data.errorText)
             }
             if (x === null) {
                 setImage(errorUnknown)
-                setInfo('')
+                setInfo(e.name)
                 setCode('Error!')
                 setDisable(false)
                 setText(e.message)
             }
             if (x === false) {
                 setImage(error400)
-                setInfo('')
+                setInfo(e.response.data.info)
                 setCode('Код 400!')
                 setDisable(false)
-                setText(e.message)
+                setText(e.response.data.errorText)
             }
         }
         const url =
@@ -62,12 +62,12 @@ const HW13 = () => {
         axios
             .post(url, {success: x})
             .then((res) => {
-
+                debugger
                 setCode('Код 200!')
-                setInfo(res.data.errorText)
+                setInfo(res.data.info)
                 setImage(success200)
                 setDisable(false)
-                setText('sdsd')
+                setText(res.data.errorText)
                 // дописать
             })
             .catch((e) => {
@@ -75,6 +75,7 @@ const HW13 = () => {
                 // дописать
                 boss(e)
             })
+
 
     }
 
