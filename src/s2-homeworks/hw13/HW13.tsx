@@ -64,10 +64,10 @@ const HW13 = () => {
             .then((res) => {
 
                 setCode('Код 200!')
-                setInfo('')
+                setInfo(res.data.errorText)
                 setImage(success200)
                 setDisable(false)
-                setText(res.data.errorText)
+                setText('sdsd')
                 // дописать
             })
             .catch((e) => {
