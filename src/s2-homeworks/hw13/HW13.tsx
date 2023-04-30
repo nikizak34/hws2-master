@@ -23,27 +23,29 @@ const HW13 = () => {
 
 
     const send = (x?: boolean | null) => () => {
-        const boss = () => {
+        debugger
+        const boss = (e:any) => {
+
             if (x === undefined) {
                 setImage(error500)
                 setInfo('')
                 setCode('Код 500!')
                 setDisable(false)
-                setText('sddfsfsf')
+                setText(e.message)
             }
             if (x === null) {
                 setImage(errorUnknown)
                 setInfo('')
                 setCode('Error!')
                 setDisable(false)
-                setText('sddfsfsf')
+                setText(e.message)
             }
             if (x === false) {
                 setImage(error400)
                 setInfo('')
                 setCode('Код 400!')
                 setDisable(false)
-                setText('sddfsfsf')
+                setText(e.message)
             }
         }
         const url =
@@ -60,25 +62,20 @@ const HW13 = () => {
         axios
             .post(url, {success: x})
             .then((res) => {
+
                 setCode('Код 200!')
                 setInfo('')
                 setImage(success200)
                 setDisable(false)
-                setText('sddfsfsf')
+                setText(res.data.errorText)
                 // дописать
             })
             .catch((e) => {
+                debugger
                 // дописать
-                boss()
-
+                boss(e)
             })
-            .catch((e) => {
-                boss()
 
-            }).catch((e) => {
-                boss()
-            }
-        )
     }
 
     return (
