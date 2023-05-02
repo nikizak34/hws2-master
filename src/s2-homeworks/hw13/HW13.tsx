@@ -23,7 +23,6 @@ const HW13 = () => {
 
 
     const send = (x?: boolean | null) => () => {
-        debugger
         const boss = (e: any) => {
 
             if (x === false) {
@@ -62,7 +61,6 @@ const HW13 = () => {
         axios
             .post(url, {success: x})
             .then((res) => {
-                debugger
                 setCode('Код 200!')
                 setInfo(res.data.info)
                 setImage(success200)
@@ -71,7 +69,6 @@ const HW13 = () => {
                 // дописать
             })
             .catch((e) => {
-                debugger
                 // дописать
                 boss(e)
             })
