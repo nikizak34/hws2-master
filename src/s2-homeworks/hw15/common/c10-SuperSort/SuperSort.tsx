@@ -24,6 +24,7 @@ export const pureChange = (sort: string, down: string, up: string) => {
 
 
 const SuperSort: React.FC<SuperSortPropsType> = (
+
     {
         sort, value, onChange, id = 'hw15',
     }
