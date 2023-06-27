@@ -34,8 +34,8 @@ const HW14 = () => {
         setLoading(true)
         getTechs(value)
             .then((res) => {
-                // @ts-ignore
-                setTechs(res.data.techs)
+
+                res&&setTechs(res.data.techs)
                 setLoading(false)
                 // делает студент
 

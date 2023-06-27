@@ -48,11 +48,14 @@ const HW15 = () => {
     const [techs, setTechs] = useState<TechType[]>([])
 
     const sendQuery = (params: any) => {
+
         setLoading(true)
         getTechs(params)
             .then((res) => {
                 // делает студент
-
+                setLoading(false)
+                res && setTechs(res.data.techs)
+                res && setTotalCount(res.data.totalCount)
                 // сохранить пришедшие данные
 
                 //
@@ -61,12 +64,14 @@ const HW15 = () => {
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
-
         // setPage(
         // setCount(
-
         // sendQuery(
         // setSearchParams(
+        setPage(newPage);
+        setCount(newCount);
+        setSearchParams({ page: newPage.toString(), count: newCount.toString() })
+        sendQuery({ page: newPage, count: newCount });
 
         //
     }
@@ -74,6 +79,10 @@ const HW15 = () => {
     const onChangeSort = (newSort: string) => {
         // делает студент
 
+        setSort(newSort);
+        setPage(1);
+        setSearchParams({ page: '1', count: count.toString(), sort: newSort });
+        sendQuery({sort:newSort})
         // setSort(
         // setPage(1) // при сортировке сбрасывать на 1 страницу
 
